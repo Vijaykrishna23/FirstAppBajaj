@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleClick(View view) {
         Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,HomeActivity.class));
     }
 
 }

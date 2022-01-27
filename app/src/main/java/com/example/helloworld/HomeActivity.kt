@@ -1,5 +1,6 @@
 package com.example.helloworld
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,5 +13,8 @@ class HomeActivity : AppCompatActivity() {
 
     fun handleClick(view: android.view.View) {
         Toast.makeText(this, "pressing...", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
     }
 }
