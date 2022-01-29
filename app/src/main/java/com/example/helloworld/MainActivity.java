@@ -6,20 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textview = findViewById(R.id.tvMain);
-        String name = getIntent().getExtras().getString("kv");
-        textview.setText(name);
+        Button mButton = findViewById(R.id.btnDemo);
+        mButton.setOnClickListener(this);
+
+
+        Spinner cSpinner = findViewById(R.id.dishesSpinner);
+        cSpinner.setOnItemSelectedListener(this);
+
+//        TextView textview = findViewById(R.id.tvMain);
+//        String name = getIntent().getExtras().getString("kv");
+//        textview.setText(name);
     }
 
     public void handleClick(View view) {
@@ -69,4 +79,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String itemName = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, itemName, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
